@@ -91,9 +91,7 @@ variable "azure_master_availability_zones" {
   type        = list(string)
   description = "The availability zones in which to create the masters. The length of this list must match master_count."
   default = [
-    "1",
-    "2",
-    "3",
+    "1"
   ]
 }
 
