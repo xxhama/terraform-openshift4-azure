@@ -70,7 +70,6 @@ variable "azure_image_url" {
 variable "azure_subscription_id" {
   type        = string
   description = "The subscription that should be used to interact with Azure API"
-  default = "${var.subscription_id}"
 }
 
 variable "azure_client_id" {
