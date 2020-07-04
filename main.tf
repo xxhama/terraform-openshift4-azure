@@ -6,6 +6,7 @@ provider "azurerm" {
   client_id = var.azure_client_id
 
   environment     = var.azure_environment
+  version = "~> 2.17"
 }
 
 resource "random_string" "cluster_id" {
