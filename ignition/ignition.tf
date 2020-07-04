@@ -91,9 +91,8 @@ EOF
 resource "null_resource" "generate_azure_service_account" {
   provisioner "local-exec" {
     command = <<EOF
-export AZURE_CONFIG_DIR=${local.installer_workspace}/.azure
-mkdir -p $AZURE_CONFIG_DIR
-echo '{"subscriptionId": "${var.azure_subscription_id}","clientId":"${var.azure_client_id}","clientSecret":"${var.azure_client_secret}","tenantId":"${var.azure_tenant_id}"}' > $AZURE_CONFIG_DIR/osServicePrincipal.json
+az login --service-principal --username ${var.azure_client_id} --password ${var.azure_client_secret} --tenant ${var.azure_tenant_id}
+echo '{"subscriptionId": "${var.azure_subscription_id}","clientId":"${var.azure_client_id}","clientSecret":"${var.azure_client_secret}","tenantId":"${var.azure_tenant_id}"}' > $HOME/.azure/osServicePrincipal.json
 EOF
   }
 }
