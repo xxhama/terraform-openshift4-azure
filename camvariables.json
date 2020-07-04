@@ -98,7 +98,7 @@
       "label": "Azure Client Secret",
       "description": "Azure Client Secret",
       "hidden": false,
-      "immutable": true,
+      "immutable": false,
       "required": true,
       "secured": false,
       "type": "string"
@@ -108,7 +108,7 @@
       "label": "Azure Tenant ID",
       "description": "Azure Tenant ID",
       "hidden": false,
-      "immutable": true,
+      "immutable": false,
       "required": true,
       "secured": false,
       "type": "string"
@@ -118,7 +118,7 @@
       "label": "Azure Tenant ID",
       "description": "Azure Tenant ID",
       "hidden": false,
-      "immutable": true,
+      "immutable": false,
       "required": true,
       "secured": false,
       "type": "string"
@@ -128,7 +128,7 @@
       "label": "Azure Service Account ID",
       "description": "Azure Tenant ID",
       "hidden": false,
-      "immutable": true,
+      "immutable": false,
       "required": true,
       "secured": false,
       "type": "string"
