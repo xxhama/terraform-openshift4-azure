@@ -92,7 +92,48 @@
       "secured": false,
       "type": "list",
       "default": ["1"]
+    },
+    {
+      "name": "azure_client_secret",
+      "label": "Azure Client Secret",
+      "description": "Azure Client Secret",
+      "hidden": false,
+      "immutable": true,
+      "required": true,
+      "secured": false,
+      "type": "string"
+    },
+    {
+      "name": "azure_tenant_id",
+      "label": "Azure Tenant ID",
+      "description": "Azure Tenant ID",
+      "hidden": false,
+      "immutable": true,
+      "required": true,
+      "secured": false,
+      "type": "string"
+    },
+    {
+      "name": "azure_subscription_id",
+      "label": "Azure Tenant ID",
+      "description": "Azure Tenant ID",
+      "hidden": false,
+      "immutable": true,
+      "required": true,
+      "secured": false,
+      "type": "string"
+    },
+    {
+      "name": "azure_client_id",
+      "label": "Azure Service Account ID",
+      "description": "Azure Tenant ID",
+      "hidden": false,
+      "immutable": true,
+      "required": true,
+      "secured": false,
+      "type": "string"
     }
+
   ],
   "template_output_params": [
     {
