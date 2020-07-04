@@ -45,6 +45,10 @@ locals {
   azure_compute_subnet              = (var.azure_preexisting_network && var.azure_compute_subnet != null) ? var.azure_compute_subnet : "${local.cluster_id}-worker-subnet"
 }
 
+module "camtags" {
+  source = "../Modules/camtags"
+}
+
 module "vnet" {
   source              = "./vnet"
   resource_group_name = azurerm_resource_group.main.name
