@@ -87,19 +87,11 @@ EOF
 
 }
 
-
 resource "null_resource" "generate_azure_service_account" {
   provisioner "local-exec" {
     command = <<EOF
-rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sh -c 'echo -e "[azure-cli]
-name=Azure CLI
-baseurl=https://packages.microsoft.com/yumrepos/azure-cli
-enabled=1
-gpgcheck=1
-gpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/azure-cli.repo'
-yum install azure-cli -y
-az login --service-principal --username ${var.azure_client_id} --password ${var.azure_client_secret} --tenant ${var.azure_tenant_id}
+mkdir -p $HOME/.azure
+export AZURE_CONFIG_DIR=$HOME/.azure
 echo '{"subscriptionId": "${var.azure_subscription_id}","clientId":"${var.azure_client_id}","clientSecret":"${var.azure_client_secret}","tenantId":"${var.azure_tenant_id}"}' > $HOME/.azure/osServicePrincipal.json
 EOF
   }
