@@ -45,6 +45,36 @@
           "label": "West Central US"
         }
       ]
+    },
+    {
+      "name": "cluster_name",
+      "label": "Cluster Name",
+      "description": "This will be used as the subdomain and resource pool for your cluster",
+      "hidden": false,
+      "immutable": false,
+      "required": true,
+      "secured": false,
+      "type": "string"
+    },
+    {
+      "name": "base_domain",
+      "label": "Base Domain",
+      "description": "This is the base domain for your cluster, example.com, domain.com",
+      "hidden": false,
+      "immutable": false,
+      "required": true,
+      "secured": false,
+      "type": "string"
+    },
+    {
+      "name": "azure_base_domain_resource_group_name",
+      "label": "Base Domain Resource Group Name",
+      "description": "The resource group name that is hosting your DNS zone, ibm-cpat-ocp",
+      "hidden": false,
+      "immutable": false,
+      "required": true,
+      "secured": false,
+      "type": "string"
     }
   ],
   "template_output_params": [
