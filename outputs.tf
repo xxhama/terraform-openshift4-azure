@@ -9,3 +9,7 @@ output "resource_group" {
 output "bootstrap_public_ip" {
   value = module.bootstrap.bootstrap_public_ip
 }
+
+output "console-url" {
+  value = "https://console-openshift-console.apps.${var.cluster_name}.${var.base_domain}"
+}
