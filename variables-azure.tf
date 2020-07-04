@@ -67,27 +67,6 @@ variable "azure_image_url" {
   default     = "https://rhcos.blob.core.windows.net/imagebucket/rhcos-43.81.202003111353.0-azure.x86_64.vhd"
 }
 
-variable "azure_subscription_id" {
-  type        = string
-  description = "The subscription that should be used to interact with Azure API"
-  default     = subscription_id
-}
-
-variable "azure_client_id" {
-  type        = string
-  description = "The app ID that should be used to interact with Azure API"
-}
-
-variable "azure_client_secret" {
-  type        = string
-  description = "The password that should be used to interact with Azure API"
-}
-
-variable "azure_tenant_id" {
-  type        = string
-  description = "The tenant ID that should be used to interact with Azure API"
-}
-
 variable "azure_master_availability_zones" {
   type        = list(string)
   description = "The availability zones in which to create the masters. The length of this list must match master_count."
