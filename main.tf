@@ -87,10 +87,10 @@ module "ignition" {
   worker_os_disk_size           = var.azure_worker_root_volume_size
   infra_os_disk_size            = var.azure_infra_root_volume_size
   master_os_disk_size           = var.azure_master_root_volume_size
-  azure_subscription_id         = var.subscription_id
-  azure_client_id               = var.client_id
-  azure_client_secret           = var.client_secret
-  azure_tenant_id               = var.tenant_id
+  azure_subscription_id         = azurerm.subscription_id
+  azure_client_id               = azurerm.client_id
+  azure_client_secret           = azurerm.client_secret
+  azure_tenant_id               = azurerm.tenant_id
   azure_rhcos_image_id          = azurerm_image.cluster.id
   virtual_network_name          = local.azure_virtual_network
   network_resource_group_name   = local.azure_network_resource_group_name
