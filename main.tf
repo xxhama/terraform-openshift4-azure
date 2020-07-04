@@ -7,6 +7,10 @@ provider "azurerm" {
   environment     = var.azure_environment
 }
 
+module "camtags" {
+  source = "../Modules/camtags"
+}
+
 resource "random_string" "cluster_id" {
   length  = 5
   special = false
@@ -43,10 +47,6 @@ locals {
   azure_virtual_network             = (var.azure_preexisting_network && var.azure_virtual_network != null) ? var.azure_virtual_network : "${local.cluster_id}-vnet"
   azure_control_plane_subnet        = (var.azure_preexisting_network && var.azure_control_plane_subnet != null) ? var.azure_control_plane_subnet : "${local.cluster_id}-master-subnet"
   azure_compute_subnet              = (var.azure_preexisting_network && var.azure_compute_subnet != null) ? var.azure_compute_subnet : "${local.cluster_id}-worker-subnet"
-}
-
-module "camtags" {
-  source = "../Modules/camtags"
 }
 
 module "vnet" {
