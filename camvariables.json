@@ -75,6 +75,17 @@
       "required": true,
       "secured": false,
       "type": "string"
+    },
+    {
+      "name": "azure_master_availability_zones",
+      "label": "Availability Zones",
+      "description": "Azure availability zones for HA",
+      "hidden": false,
+      "immutable": false,
+      "required": false,
+      "secured": false,
+      "type": "list",
+      "default": ["1"]
     }
   ],
   "template_output_params": [
