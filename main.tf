@@ -7,10 +7,6 @@ provider "azurerm" {
   environment     = var.azure_environment
 }
 
-module "camtags" {
-  source = "../Modules/camtags"
-}
-
 resource "random_string" "cluster_id" {
   length  = 5
   special = false
