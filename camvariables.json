@@ -21,11 +21,11 @@
           "label": "West US 2"
         },
         {
-          "value": "East US",
+          "value": "eastus",
           "label": "East US"
         },
         {
-          "value": "East US",
+          "value": "eastus2",
           "label": "East US 2"
         },
         {
