@@ -115,8 +115,8 @@
     },
     {
       "name": "azure_subscription_id",
-      "label": "Azure Tenant ID",
-      "description": "Azure Tenant ID",
+      "label": "Azure Subscription ID",
+      "description": "Azure Subscription ID",
       "hidden": false,
       "immutable": false,
       "required": true,
@@ -126,7 +126,7 @@
     {
       "name": "azure_client_id",
       "label": "Azure Service Account ID",
-      "description": "Azure Tenant ID",
+      "description": "Azure Service Account ID",
       "hidden": false,
       "immutable": false,
       "required": true,
