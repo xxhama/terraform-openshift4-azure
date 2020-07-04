@@ -203,7 +203,6 @@ variable "openshift_version" {
 
 variable "openshift_pull_secret" {
   type    = string
-  default = "pull-secret"
 }
 
 variable "azure_infra_root_volume_size" {

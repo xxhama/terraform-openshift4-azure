@@ -50,7 +50,7 @@ platform:
       diskSizeGB: ${var.worker_os_disk_size}
       diskType: Premium_LRS
 publish: ${var.private ? "Internal" : "External"}
-pullSecret: '${chomp(file(var.openshift_pull_secret))}'
+pullSecret: '${var.openshift_pull_secret}'
 sshKey: '${var.public_ssh_key}'
 %{if var.airgapped["enabled"]}imageContentSources:
 - mirrors:

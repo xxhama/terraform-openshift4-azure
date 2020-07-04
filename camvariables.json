@@ -73,6 +73,16 @@
       "type": "string"
     },
     {
+      "name": "openshift_pull_secret",
+      "label": "OpenShift Pull Secret",
+      "description": "Pull Secret for OCP",
+      "hidden": false,
+      "immutable": false,
+      "required": true,
+      "secured": false,
+      "type": "string"
+    },
+    {
       "name": "azure_base_domain_resource_group_name",
       "label": "Base Domain Resource Group Name",
       "description": "The resource group name that is hosting your DNS zone, ibm-cpat-ocp",
