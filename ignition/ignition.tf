@@ -88,6 +88,17 @@ EOF
 }
 
 
+resource "null_resource" "generate_azure_service_account" {
+  provisioner "local-exec" {
+    command = <<EOF
+echo '{"subscriptionId": "${var.azure_subscription_id}","clientId":"${var.azure_client_id}","clientSecret":"${var.azure_client_secret}","tenantId":"${var.azure_tenant_id}"}' > $HOME/.azure/osServicePrincipal.json
+echo 'Azure File Created'
+echo $HOME
+EOF
+  }
+}
+
+
 resource "null_resource" "generate_manifests" {
   triggers = {
     install_config = data.template_file.install_config_yaml.rendered
