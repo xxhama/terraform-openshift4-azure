@@ -90,9 +90,7 @@ variable "azure_tenant_id" {
 variable "azure_master_availability_zones" {
   type        = list(string)
   description = "The availability zones in which to create the masters. The length of this list must match master_count."
-  default = [
-    "1"
-  ]
+  default = ["1", "2", "2"]
 }
 
 variable "azure_preexisting_network" {
@@ -220,7 +218,7 @@ variable "master_count" {
 
 variable "worker_count" {
   type    = string
-  default = 3
+  default = 2
 }
 
 variable "infra_count" {
