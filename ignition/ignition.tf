@@ -179,11 +179,6 @@ resource "azurerm_storage_blob" "ignition-worker" {
   ]
 }
 
-data "local_file" "kubeadmin-password" {
-  filename = "${local.installer_workspace}/auth/kubeadmin-password"
-  depends_on = [null_resource.generate_ignition]
-}
-
 data "ignition_config" "master_redirect" {
   replace {
     source = "${azurerm_storage_blob.ignition-master.url}${data.azurerm_storage_account_sas.ignition.sas}"
