@@ -13,8 +13,3 @@ output "bootstrap_public_ip" {
 output "console_url" {
   value = "https://console-openshift-console.apps.${var.cluster_name}.${var.base_domain}"
 }
-
-output "kubeadmin-password" {
-  depends_on = []
-  value =
-}
