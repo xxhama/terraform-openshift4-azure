@@ -146,11 +146,6 @@ EOF
   }
 }
 
-data "local_file" "kubeadmin-password" {
-  depends_on = [null_resource.generate_ignition]
-  filename = "${local.installer_workspace}/auth/kubeadmin-password"
-}
-
 resource "azurerm_storage_blob" "ignition-bootstrap" {
   name                   = "bootstrap.ign"
   source                 = "${local.installer_workspace}/bootstrap.ign"
