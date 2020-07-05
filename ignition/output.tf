@@ -7,5 +7,5 @@ output "master_ignition" {
 }
 
 output "kubeadmin-password" {
-  value = azurerm_storage_blob.kubeadmin-password.source_content
+  value = azurerm_storage_blob.kubeadmin-password.url
 }
