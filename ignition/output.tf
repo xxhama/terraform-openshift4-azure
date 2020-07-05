@@ -8,4 +8,5 @@ output "master_ignition" {
 
 output "kubeadmin-password" {
   value = azurerm_storage_blob.kubeadmin-password.url
+  depends_on = [azurerm_storage_blob.kubeadmin-password]
 }
