@@ -148,12 +148,12 @@ EOF
 
 data "local_file" "kubeadmin-password" {
   depends_on = [null_resource.generate_ignition]
-  filename = "${local.installer_workspace}/installer-files/auth/kubeadmin-password"
+  filename = "${local.installer_workspace}/auth/kubeadmin-password"
 }
 
 output "kubeadmin_password" {
   depends_on = [null_resource.generate_ignition]
-  value = file("${local.installer_workspace}/installer-files/auth/kubeadmin-password")
+  value = file("${local.installer_workspace}/auth/kubeadmin-password")
 }
 
 resource "azurerm_storage_blob" "ignition-bootstrap" {
