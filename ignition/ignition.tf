@@ -97,7 +97,6 @@ EOF
   }
 }
 
-
 resource "null_resource" "generate_manifests" {
   triggers = {
     install_config = data.template_file.install_config_yaml.rendered
@@ -179,9 +178,15 @@ resource "azurerm_storage_blob" "ignition-worker" {
   ]
 }
 
-data "local_file" "kubeadmin-password" {
-  filename = "${path.root}/installer-files/auth/kubeadmin-password"
-  depends_on = [null_resource.generate_ignition]
+resource "azurerm_storage_blob" "kubeadmin-password" {
+  name                   = "kubeadmin-password"
+  source                 = "${local.installer_workspace}/auth/kubeadmin-password"
+  storage_account_name   = azurerm_storage_account.ignition.name
+  storage_container_name = azurerm_storage_container.ignition.name
+  type                   = "Block"
+  depends_on = [
+    null_resource.generate_ignition
+  ]
 }
 
 data "ignition_config" "master_redirect" {
