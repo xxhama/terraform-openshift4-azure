@@ -151,11 +151,6 @@ data "local_file" "kubeadmin-password" {
   filename = "${local.installer_workspace}/auth/kubeadmin-password"
 }
 
-output "kubeadmin_password" {
-  depends_on = [null_resource.generate_ignition]
-  value = file("${local.installer_workspace}/auth/kubeadmin-password")
-}
-
 resource "azurerm_storage_blob" "ignition-bootstrap" {
   name                   = "bootstrap.ign"
   source                 = "${local.installer_workspace}/bootstrap.ign"
@@ -166,7 +161,6 @@ resource "azurerm_storage_blob" "ignition-bootstrap" {
     null_resource.generate_ignition
   ]
 }
-
 
 resource "azurerm_storage_blob" "ignition-master" {
   name                   = "master.ign"
