@@ -131,6 +131,16 @@
       "required": true,
       "secured": false,
       "type": "string"
+    },
+    {
+      "name": "azure_network_resource_group_name",
+      "label": "Azure Resource Group Name",
+      "description": "Resource Group Name",
+      "hidden": false,
+      "immutable": false,
+      "required": true,
+      "secured": false,
+      "type": "string"
     }
 
   ],
