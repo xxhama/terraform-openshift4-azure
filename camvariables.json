@@ -141,6 +141,16 @@
       "required": true,
       "secured": false,
       "type": "string"
+    },
+    {
+      "name": "azure_private",
+      "label": "Private Clster",
+      "description": "Resource Group Name",
+      "hidden": false,
+      "immutable": false,
+      "required": true,
+      "secured": false,
+      "type": "boolean"
     }
 
   ],
