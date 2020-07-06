@@ -18,12 +18,12 @@
       "type": "string",
       "options": [
         {
-          "value": "West US",
+          "value": "westus",
           "label": "West US",
           "default": "true"
         },
         {
-          "value": "West US 2",
+          "value": "westus2",
           "label": "West US 2"
         },
         {
@@ -35,20 +35,12 @@
           "label": "East US 2"
         },
         {
-          "value": "Central US",
+          "value": "centralus",
           "label": "Central US"
         },
         {
-          "value": "North Central US",
-          "label": "North Central US"
-        },
-        {
-          "value": "South Central US",
-          "label": "South Central US"
-        },
-        {
-          "value": "West Central US",
-          "label": "West Central US"
+          "value": "Canada Central",
+          "label": "Canada Central"
         }
       ]
     },
