@@ -13,3 +13,11 @@ output "bootstrap_public_ip" {
 output "console_url" {
   value = "https://console-openshift-console.apps.${var.cluster_name}.${var.base_domain}"
 }
+
+output "kubeadmin-password" {
+  value = module.ignition.kubeadmin-password
+}
+
+output "kubeconfig" {
+  value = module.master.kubeconfig
+}
