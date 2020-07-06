@@ -144,7 +144,7 @@
     },
     {
       "name": "azure_private",
-      "label": "Private Clster",
+      "label": "Private Cluster",
       "description": "Resource Group Name",
       "hidden": false,
       "immutable": false,
