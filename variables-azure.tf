@@ -218,7 +218,7 @@ variable "master_count" {
 
 variable "worker_count" {
   type    = string
-  default = 0
+  default = 2
 }
 
 variable "infra_count" {
