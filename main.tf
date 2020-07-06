@@ -9,12 +9,6 @@ provider "azurerm" {
   version = "~> 2.17"
 }
 
-resource "random_string" "cluster_id" {
-  length  = 5
-  special = false
-  upper   = false
-}
-
 # SSH Key for VMs
 resource "tls_private_key" "installkey" {
   algorithm = "RSA"
@@ -34,14 +28,14 @@ resource "local_file" "write_public_key" {
 }
 
 locals {
-  cluster_id = "${var.cluster_name}-${random_string.cluster_id.result}"
+  cluster_id = var.cluster_name
   tags = merge(
     {
       "kubernetes.io_cluster.${local.cluster_id}" = "owned"
     },
     var.azure_extra_tags,
   )
-  azure_network_resource_group_name = (var.azure_preexisting_network && var.azure_network_resource_group_name != null) ? var.azure_network_resource_group_name : "${local.cluster_id}-rg"
+  azure_network_resource_group_name = (var.azure_preexisting_network && var.azure_network_resource_group_name != null) ? var.azure_network_resource_group_name : local.cluster_id
   azure_virtual_network             = (var.azure_preexisting_network && var.azure_virtual_network != null) ? var.azure_virtual_network : "${local.cluster_id}-vnet"
   azure_control_plane_subnet        = (var.azure_preexisting_network && var.azure_control_plane_subnet != null) ? var.azure_control_plane_subnet : "${local.cluster_id}-master-subnet"
   azure_compute_subnet              = (var.azure_preexisting_network && var.azure_compute_subnet != null) ? var.azure_compute_subnet : "${local.cluster_id}-worker-subnet"
@@ -182,7 +176,7 @@ module "dns" {
 }
 
 resource "azurerm_resource_group" "main" {
-  name     = "${local.cluster_id}-rg"
+  name     = local.cluster_id
   location = var.azure_region
   tags     = local.tags
 }
@@ -194,7 +188,7 @@ data "azurerm_resource_group" "network" {
 }
 
 resource "azurerm_storage_account" "cluster" {
-  name                     = "cluster${random_string.cluster_id.result}"
+  name                     = "cluster-${azurerm_resource_group.main.name}"
   resource_group_name      = azurerm_resource_group.main.name
   location                 = var.azure_region
   account_tier             = "Standard"
@@ -229,7 +223,7 @@ resource "azurerm_storage_container" "vhd" {
 }
 
 resource "azurerm_storage_blob" "rhcos_image" {
-  name                   = "rhcos${random_string.cluster_id.result}.vhd"
+  name                   = "rhcos${azurerm_resource_group.main.name}.vhd"
   storage_account_name   = azurerm_storage_account.cluster.name
   storage_container_name = azurerm_storage_container.vhd.name
   type                   = "Page"

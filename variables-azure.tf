@@ -41,7 +41,7 @@ Example: `{ "key" = "value", "foo" = "bar" }`
 EOF
 
 
-  default = { "kubernetes_cluster" = "terraform_deployed" }
+  default = {}
 }
 
 variable "azure_master_root_volume_type" {
