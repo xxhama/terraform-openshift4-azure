@@ -230,7 +230,7 @@ resource "azurerm_storage_blob" "rhcos_image" {
 }
 
 resource "azurerm_image" "cluster" {
-  name                = local.cluster_id
+  name                = "azureimagecluster"
   resource_group_name = data.azurerm_resource_group.main.name
   location            = var.azure_region
 
