@@ -131,6 +131,7 @@
       "hidden": false,
       "immutable": false,
       "required": true,
+      "default": false,
       "secured": false,
       "type": "boolean"
     }
