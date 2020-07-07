@@ -221,7 +221,7 @@ resource "azurerm_storage_container" "vhd" {
 }
 
 resource "azurerm_storage_blob" "rhcos_image" {
-  name                   = "rhcos${data.azurerm_resource_group.main.name}.vhd"
+  name                   = "rhcos-image.vhd"
   storage_account_name   = azurerm_storage_account.cluster.name
   storage_container_name = azurerm_storage_container.vhd.name
   type                   = "Page"
