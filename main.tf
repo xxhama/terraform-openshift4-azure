@@ -186,7 +186,7 @@ data "azurerm_resource_group" "network" {
 }
 
 resource "azurerm_storage_account" "cluster" {
-  name                     = "clusterstorage"
+  name                     = "cluster${data.azurerm_resource_group.main.name}"
   resource_group_name      = data.azurerm_resource_group.main.name
   location                 = var.azure_region
   account_tier             = "Standard"
@@ -195,7 +195,7 @@ resource "azurerm_storage_account" "cluster" {
 
 resource "azurerm_user_assigned_identity" "main" {
   resource_group_name = data.azurerm_resource_group.main.name
-  location            = var.azure_region
+  location            = data.azurerm_resource_group.main.location
 
   name = "${local.cluster_id}-identity"
 }
@@ -221,7 +221,7 @@ resource "azurerm_storage_container" "vhd" {
 }
 
 resource "azurerm_storage_blob" "rhcos_image" {
-  name                   = "rhcos-image.vhd"
+  name                   = "rhcos${data.azurerm_resource_group.main.name}.vhd"
   storage_account_name   = azurerm_storage_account.cluster.name
   storage_container_name = azurerm_storage_container.vhd.name
   type                   = "Page"
@@ -230,7 +230,7 @@ resource "azurerm_storage_blob" "rhcos_image" {
 }
 
 resource "azurerm_image" "cluster" {
-  name                = "azureimagecluster"
+  name                = local.cluster_id
   resource_group_name = data.azurerm_resource_group.main.name
   location            = var.azure_region
 
