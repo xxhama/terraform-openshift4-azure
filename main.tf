@@ -186,7 +186,7 @@ data "azurerm_resource_group" "network" {
 }
 
 resource "azurerm_storage_account" "cluster" {
-  name                     = "cluster-storage"
+  name                     = "clusterstorage"
   resource_group_name      = data.azurerm_resource_group.main.name
   location                 = var.azure_region
   account_tier             = "Standard"
