@@ -9,6 +9,12 @@ provider "azurerm" {
   version = "~> 2.17"
 }
 
+resource "random_string" "cluster_id" {
+  length  = 5
+  special = false
+  upper   = false
+}
+
 # SSH Key for VMs
 resource "tls_private_key" "installkey" {
   algorithm = "RSA"
@@ -186,7 +192,7 @@ data "azurerm_resource_group" "network" {
 }
 
 resource "azurerm_storage_account" "cluster" {
-  name                     = "cluster${data.azurerm_resource_group.main.name}"
+  name                     = "cluster${random_string.cluster_id.result}"
   resource_group_name      = data.azurerm_resource_group.main.name
   location                 = var.azure_region
   account_tier             = "Standard"
@@ -195,7 +201,7 @@ resource "azurerm_storage_account" "cluster" {
 
 resource "azurerm_user_assigned_identity" "main" {
   resource_group_name = data.azurerm_resource_group.main.name
-  location            = data.azurerm_resource_group.main.location
+  location            = var.azure_region
 
   name = "${local.cluster_id}-identity"
 }
@@ -221,7 +227,7 @@ resource "azurerm_storage_container" "vhd" {
 }
 
 resource "azurerm_storage_blob" "rhcos_image" {
-  name                   = "rhcos${data.azurerm_resource_group.main.name}.vhd"
+  name                   = "rhcos${random_string.cluster_id.result}.vhd"
   storage_account_name   = azurerm_storage_account.cluster.name
   storage_container_name = azurerm_storage_container.vhd.name
   type                   = "Page"
