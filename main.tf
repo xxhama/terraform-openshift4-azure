@@ -10,7 +10,7 @@ provider "azurerm" {
 }
 
 resource "random_string" "cluster_id" {
-  length  = 5
+  length  = 10
   special = false
   upper   = false
 }
