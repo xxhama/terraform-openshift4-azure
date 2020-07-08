@@ -42,9 +42,9 @@ locals {
     var.azure_extra_tags,
   )
   azure_network_resource_group_name = (var.azure_preexisting_network && var.azure_network_resource_group_name != null) ? var.azure_network_resource_group_name : local.cluster_id
-  azure_virtual_network             = (var.azure_preexisting_network && var.azure_virtual_network != null) ? var.azure_virtual_network : "${local.cluster_id}-vnet"
-  azure_control_plane_subnet        = (var.azure_preexisting_network && var.azure_control_plane_subnet != null) ? var.azure_control_plane_subnet : "${local.cluster_id}-master-subnet"
-  azure_compute_subnet              = (var.azure_preexisting_network && var.azure_compute_subnet != null) ? var.azure_compute_subnet : "${local.cluster_id}-worker-subnet"
+  azure_virtual_network             = (var.azure_preexisting_network && var.azure_virtual_network != null) ? var.azure_virtual_network : "${random_string.cluster_id.result}-vnet"
+  azure_control_plane_subnet        = (var.azure_preexisting_network && var.azure_control_plane_subnet != null) ? var.azure_control_plane_subnet : "${random_string.cluster_id.result}-master-subnet"
+  azure_compute_subnet              = (var.azure_preexisting_network && var.azure_compute_subnet != null) ? var.azure_compute_subnet : "${random_string.cluster_id.result}-worker-subnet"
 }
 
 module "vnet" {
